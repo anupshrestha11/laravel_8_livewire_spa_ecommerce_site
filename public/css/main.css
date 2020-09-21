@@ -1,0 +1,33 @@
+.sidebar-nav {
+  height: 100vh;
+  background-color: #2f363f;
+  width: 180px;
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+}
+
+.sidebar-nav a {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 5px 0;
+  background: #728195;
+  transition: all 0.3s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background-color: white;
+  color: #000;
+}
+
+.sidebar-nav h3 {
+  letter-spacing: 0.1rem;
+}
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: red;
+}
+

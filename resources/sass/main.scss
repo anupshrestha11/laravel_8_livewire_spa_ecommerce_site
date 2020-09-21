@@ -1,0 +1,31 @@
+.sidebar-nav {
+    height: 100vh;
+    background-color: #2f363f;
+    width: 180px;
+    display: flex;
+    flex-flow: column;
+    padding: 10px;
+    a {
+        text-decoration: none;
+        color: #fff;
+        padding: 5px 10px;
+        margin: 5px 0;
+        background: lighten($color: #2f363f, $amount: 30%);
+        transition: all 0.3s ease;
+
+        &:hover,
+        &.active {
+            background-color: lighten($color: #2f363f, $amount: 80%);
+            color: #000;
+        }
+    }
+
+    h3 {
+        letter-spacing: 0.1rem;
+    }
+}
+
+.turbolinks-progress-bar {
+    height: 5px;
+    background-color: red;
+}
