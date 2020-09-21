@@ -1,6 +1,6 @@
 # Laravel-8 Livewire-SPA Ecommerce Site
 
-> This project aims to build an spa web application using **Laravel 8** with **Livewire-spa** and implementation of **turbolinks**.
+This project aims to build an spa web application using **Laravel 8** with **Livewire-spa** and implementation of **turbolinks**.
 
 ---
 
