@@ -1,8 +1,8 @@
-<div>
+<div class="container">
 
     <h3 class="text-uppercase text-center mt-5 border-bottom">My cart</h3>
 
-    <table class="table table-hover container mt-5">
+    <table class="table table-hover  mt-5">
         <thead>
             <tr>
                 <th>Product Name</th>
@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $product)
+            @forelse ($products as $product)
             <tr>
                 @isset($product->name)
                 <td>{{$product->name}}</td>
@@ -41,16 +41,28 @@
                 @endisset
             </tr>
 
-            @endforeach
+            @empty
+
             <tr>
-                <td colspan="4" class="text-center text-uppercase font-weight-bold">Subtotals</td>
+                <td colspan="6" class="text-center">
+                    Cart is Empty
+                </td>
+            </tr>
+
+            @endforelse
+            <tr>
+                <td colspan="4" class="text-right text-uppercase font-weight-bold">Sub-totals: </td>
 
                 <td class="font-weight-bold">Rs. {{$subtotals}}</td>
-                <td></td>
+                <td>@if ($subtotals> 0)
+                    <a href="{{route('checkout')}}" class="btn btn-success">Checkout</a>
+                    @else
+                    <span class="btn btn-success disabled " style="cursor: not-allowed">Checkout</span>
+                    @endif
+
+                </td>
             </tr>
         </tbody>
     </table>
-
-
 
 </div>

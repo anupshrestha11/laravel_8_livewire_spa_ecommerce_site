@@ -8,7 +8,7 @@
     {{-- <div wire:poll>
         Current time: {{ now()->timezone('Asia/Kathmandu')->toDayDateTimeString()}}
     </div> --}}
-
+    @if(count($cartItems) > 0)
     <a class=" text-dark" href="{{route("cart")}}">
         <span class="fa-layers fa-fw fa-3x">
             <i class="fas fa-cart-arrow-down fa-xs"></i>
@@ -17,4 +17,11 @@
             @endif
         </span>
     </a>
+    @else
+    <span class=" text-dark disabled" style="cursor: not-allowed">
+        <span class="fa-layers fa-fw fa-3x">
+            <i class="fas fa-cart-arrow-down fa-xs"></i>
+        </span>
+    </span>
+    @endif
 </header>

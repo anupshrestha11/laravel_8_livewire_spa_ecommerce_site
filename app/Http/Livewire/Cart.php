@@ -33,16 +33,20 @@ class Cart extends Component
     {
         unset($this->cartItems[$id]);
         session()->put('cart', $this->cartItems);
+        $this->emit('checkCart');
     }
 
     public function render()
     {
-        $this->subtotals = 0;
-        $this->cartItems = session()->get('cart');
-        foreach ($this->cartItems as $key => $value) {
-            $product = Product::find($key);
-            $this->products = [...$this->products, $product];
-            $this->subtotals = $this->subtotals + ($product->price * $value);
+
+        if (session()->has('cart')) {
+            $this->subtotals = 0;
+            $this->cartItems = session()->get('cart');
+            foreach ($this->cartItems as $key => $value) {
+                $product = Product::find($key);
+                $this->products = [...$this->products, $product];
+                $this->subtotals = $this->subtotals + ($product->price * $value);
+            }
         }
 
         return view('livewire.cart');

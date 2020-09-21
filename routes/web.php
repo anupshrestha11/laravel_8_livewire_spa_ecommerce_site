@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Cart;
+use App\Http\Livewire\Checkout;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\EditProductForm;
 use App\Http\Livewire\Home;
@@ -9,10 +10,12 @@ use App\Http\Livewire\Orders;
 use App\Http\Livewire\ProductForm;
 use App\Http\Livewire\Products;
 use App\Http\Livewire\Register;
+use App\Http\Livewire\Thankyou;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
+Route::get('/thankyou', Thankyou::class)->name('thankyou');
 
 Route::get('/logout', function () {
     Auth::logout();
@@ -31,6 +34,7 @@ Route::group(['prefix' => 'dashboard', "middleware" => 'auth'], function () {
 Route::group(['prefix' => "/"], function () {
     Route::get("/", Home::class)->name('home');
     Route::get('/cart', Cart::class)->name('cart');
+    Route::get('/checkout', Checkout::class)->name('checkout');
 });
 
 // Route::get("/session", function () {

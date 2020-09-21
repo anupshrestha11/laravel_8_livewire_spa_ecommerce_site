@@ -6,32 +6,31 @@ use Livewire\Component;
 
 class Header extends Component
 {
-    public $cartItems;
+    public $cartItems = [];
 
-    protected $listeners = ['addtocart'];
+    protected $listeners = ['addtocart', 'checkCart'];
 
-    public function mount()
+
+    public function addtocart($cartItem)
     {
-        if (session()->get('cart')) {
+        if (session()->has('cart')) {
             $this->cartItems = session()->get('cart');
         } else {
             $this->cartItems = [];
         }
-    }
 
-    public function addtocart($cartItem)
-    {
         if (array_key_exists($cartItem[0], $this->cartItems)) {
             $this->cartItems[$cartItem[0]] += $cartItem[1];
         } else {
             $this->cartItems[$cartItem[0]] = $cartItem[1];
         }
+        session()->put("cart", $this->cartItems);
+    }
 
-        if (session()->has('cart')) {
-            session()->put('cart', $this->cartItems);
-        } else {
-            session()->push("cart", $this->cartItems);
-        }
+    public function checkCart()
+    {
+
+        $this->cartItems = session()->get('cart');
     }
 
     public function sessionDelete()
@@ -41,6 +40,10 @@ class Header extends Component
 
     public function render()
     {
+        $this->cartItems = [];
+        if (session()->has('cart')) {
+            $this->cartItems = session()->get('cart');
+        }
         return view('livewire.header');
     }
 }
