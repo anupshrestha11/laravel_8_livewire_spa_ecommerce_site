@@ -33,13 +33,16 @@ class Checkout extends Component
         $this->validate();
         $order = Order::create($this->form);
         $this->cartItems = session()->get('cart');
+
         foreach ($this->cartItems as $key => $value) {
-            OrderProduct::create([
-                'order_id' => $order->id,
-                'product_id' => $key,
+            $order->products()->attach(Product::find($key), [
                 'quantity' => $value
             ]);
         }
+
+
+
+
         $this->form = [
             'name' => '',
             'email' => '',

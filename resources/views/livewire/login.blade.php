@@ -5,9 +5,7 @@
             style="max-width:350px; min-height: 300px; " wire:submit.prevent='submit'>
             <h4 class="text-uppercase text-center border-bottom">Login</h4>
 
-            @auth
-            hello
-            @endauth
+
 
             @if (session()->has('login_error'))
             <small class="my-2 alert alert-danger">
